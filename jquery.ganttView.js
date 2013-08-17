@@ -143,14 +143,8 @@ behavior: {
                 var itemDiv = jQuery("<div>", { "class": "ganttview-vtheader-item" });
                 itemDiv.append(jQuery("<div>", {
                     "class": "ganttview-vtheader-item-name",
-                    "css": { "height": (data[i].series.length * cellHeight) + "px" }
+                    "css": { "height":"39px" }
                 }).append(data[i].name));
-                var seriesDiv = jQuery("<div>", { "class": "ganttview-vtheader-series" });
-                for (var j = 0; j < data[i].series.length; j++) {
-                    seriesDiv.append(jQuery("<div>", { "class": "ganttview-vtheader-series-name" })
-						.append(data[i].series[j].name));
-                }
-                itemDiv.append(seriesDiv);
                 headerDiv.append(itemDiv);
             }
             div.append(headerDiv);
@@ -184,6 +178,7 @@ behavior: {
         function addGrid(div, data, dates, cellWidth, showWeekends) {
             var gridDiv = jQuery("<div>", { "class": "ganttview-grid" });
             var rowDiv = jQuery("<div>", { "class": "ganttview-grid-row" });
+            
 			for (var y in dates) {
 				for (var m in dates[y]) {
 					for (var d in dates[y][m]) {
@@ -195,13 +190,16 @@ behavior: {
 					}
 				}
 			}
+			
             var w = jQuery("div.ganttview-grid-row-cell", rowDiv).length * cellWidth;
             rowDiv.css("width", w + "px");
+			
             gridDiv.css("width", w + "px");
             for (var i = 0; i < data.length; i++) {
-                for (var j = 0; j < data[i].series.length; j++) {
+                
                     gridDiv.append(rowDiv.clone());
-                }
+                    
+                
             }
             div.append(gridDiv);
         }
@@ -209,9 +207,10 @@ behavior: {
         function addBlockContainers(div, data) {
             var blocksDiv = jQuery("<div>", { "class": "ganttview-blocks" });
             for (var i = 0; i < data.length; i++) {
-                for (var j = 0; j < data[i].series.length; j++) {
+                
                     blocksDiv.append(jQuery("<div>", { "class": "ganttview-block-container" }));
-                }
+					blocksDiv.append(jQuery("<div>", { "class": "ganttview-block-container" }).addClass('even'));
+                
             }
             div.append(blocksDiv);
         }
@@ -232,6 +231,7 @@ behavior: {
                             "margin-left": ((offset * cellWidth) + 3) + "px"
                         }
                     });
+					if(j==1) block.addClass('even');
                     addBlockData(block, data[i], series);
                     if (data[i].series[j].color) {
                         block.css("background-color", data[i].series[j].color);
@@ -286,7 +286,7 @@ behavior: {
         }
         
         function bindBlockResize(div, cellWidth, startDate, callback) {
-        	jQuery("div.ganttview-block", div).resizable({
+        	jQuery("div.ganttview-block:not('.even')", div).resizable({
         		grid: cellWidth, 
         		handles: "e,w",
         		stop: function () {
@@ -298,7 +298,7 @@ behavior: {
         }
         
         function bindBlockDrag(div, cellWidth, startDate, callback) {
-        	jQuery("div.ganttview-block", div).draggable({
+        	jQuery("div.ganttview-block:not('.even')", div).draggable({
         		axis: "x", 
         		grid: [cellWidth, cellWidth],
         		stop: function () {
