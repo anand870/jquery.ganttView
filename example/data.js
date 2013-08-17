@@ -8,8 +8,7 @@ var ganttData = [
 	{
 		id: 2, name: "Feature 2", series: [
 			{ name: "Planned", start: new Date(2010,00,05), end: new Date(2010,00,20) },
-			{ name: "Actual", start: new Date(2010,00,06), end: new Date(2010,00,17), color: "#f0f0f0" },
-			{ name: "Projected", start: new Date(2010,00,06), end: new Date(2010,00,17), color: "#e0e0e0" }
+			{ name: "Actual", start: new Date(2010,00,06), end: new Date(2010,00,17), color: "#f0f0f0" }
 		]
 	}, 
 	{
@@ -33,13 +32,13 @@ var ganttData = [
 	{
 		id: 6, name: "Feature 6", series: [
 			{ name: "Planned", start: new Date(2010,00,05), end: new Date(2010,00,20) },
-			{ name: "Actual", start: new Date(2010,00,06), end: new Date(2010,00,17), color: "#f0f0f0" },
-			{ name: "Projected", start: new Date(2010,00,06), end: new Date(2010,00,20), color: "#e0e0e0" }
+			{ name: "Actual", start: new Date(2010,00,06), end: new Date(2010,00,17), color: "#f0f0f0" }
 		]
 	}, 
 	{
 		id: 7, name: "Feature 7", series: [
-			{ name: "Planned", start: new Date(2010,00,11), end: new Date(2010,01,03) }
+			{ name: "Planned", start: new Date(2010,00,11), end: new Date(2010,01,03) },
+			{ name: "Actual", start: new Date(2010,00,06), end: new Date(2010,00,17), color: "#f0f0f0" }
 		]
 	}, 
 	{
